@@ -45,7 +45,7 @@ locals {
 # EKS Blueprints
 #---------------------------------------------------------------
 module "eks_blueprints" {
-  source = "../../.."
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.4.0"
 
   cluster_name    = local.name
   cluster_version = var.eks_cluster_version
@@ -218,7 +218,7 @@ module "eks_blueprints" {
 }
 
 module "eks_blueprints_kubernetes_addons" {
-  source = "../../../modules/kubernetes-addons"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.4.0"
 
   eks_cluster_id       = module.eks_blueprints.eks_cluster_id
   eks_cluster_endpoint = module.eks_blueprints.eks_cluster_endpoint

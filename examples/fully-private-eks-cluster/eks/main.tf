@@ -26,7 +26,7 @@ locals {
 }
 
 module "eks_blueprints" {
-  source = "../../.."
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.4.0"
 
   cluster_name = local.name
 

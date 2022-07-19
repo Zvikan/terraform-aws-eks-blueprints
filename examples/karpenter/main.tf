@@ -50,7 +50,7 @@ locals {
 #---------------------------------------------------------------
 
 module "eks_blueprints" {
-  source = "../.."
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.4.0"
 
   cluster_name    = local.name
   cluster_version = "1.22"
@@ -130,7 +130,7 @@ module "eks_blueprints" {
 }
 
 module "eks_blueprints_kubernetes_addons" {
-  source = "../../modules/kubernetes-addons"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.4.0"
 
   eks_cluster_id       = module.eks_blueprints.eks_cluster_id
   eks_cluster_endpoint = module.eks_blueprints.eks_cluster_endpoint
@@ -147,7 +147,7 @@ module "eks_blueprints_kubernetes_addons" {
 # Creates Launch templates for Karpenter
 # Launch template outputs will be used in Karpenter Provisioners yaml files. Checkout this examples/karpenter/provisioners/default_provisioner_with_launch_templates.yaml
 module "karpenter_launch_templates" {
-  source = "../../modules/launch-templates"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/launch-templates?ref=v4.4.0"
 
   eks_cluster_id = module.eks_blueprints.eks_cluster_id
 
